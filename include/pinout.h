@@ -18,5 +18,6 @@
 // Button Pins
 #define BOUNCE_PIN A0
 #define LED_PIN 13
+#define RELAY_PIN 12
 
 #endif

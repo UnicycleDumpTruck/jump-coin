@@ -41,7 +41,7 @@ void startAudio()
 {
     Serial.println(F("Playing Sound"));
     digitalWrite(SHIELD_CS, LOW);
-    musicPlayer.startPlayingFile("/track002.mp3");
+    musicPlayer.startPlayingFile("/001coin.mp3");
     digitalWrite(SHIELD_CS, HIGH);
 }
 
