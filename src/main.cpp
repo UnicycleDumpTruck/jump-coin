@@ -8,8 +8,6 @@
 #include <radio.h>
 #include <accel.h>
 
-// SET A VARIABLE TO STORE THE LED STATE
-int ledState = LOW;
 
 // ███████╗███████╗████████╗██╗   ██╗██████╗
 // ██╔════╝██╔════╝╚══██╔══╝██║   ██║██╔══██╗
@@ -25,7 +23,7 @@ void setup()
   // {
   //   ; // wait for serial port to connect. Needed for native USB port only
   // }
-  Serial.printf("\nProject version v%s, built %s\n", VERSION, BUILD_TIMESTAMP);
+  Serial.printf("\nProject jump-coin version v%s, built %s\n", VERSION, BUILD_TIMESTAMP);
   Serial.println("Setup function commencing...");
   vsAudioSetup();
   delay(100);
@@ -35,7 +33,7 @@ void setup()
 
   // LED SETUP
   pinMode(LED_PIN, OUTPUT);
-  digitalWrite(LED_PIN, ledState);
+  digitalWrite(LED_PIN, LOW);
 
   // Relay SETUP
   pinMode(RELAY_PIN, OUTPUT);
