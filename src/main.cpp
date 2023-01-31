@@ -66,20 +66,23 @@ void loop()
   if (checkForJumps()){
     // If we're getting repeating triggers, reset accelerometer
     if ((millis() - timeLastJump) < MINTIMEBETWEENJUMPS) {
-      Serial.println("Resetting accelerometer...");
+      Serial.println("Repeat detected, resetting accelerometer...");
       accelSetup();
+      sendGoEvent(timeLastJump);
+    } else { // Play sound since not too repeating
+      Serial.println("Normal event, playing sound.");
+      // Light the LED ring
+      digitalWrite(RELAY_PIN, HIGH);
+      // Play the chaching sound
+      startAudio();
+      // Wait fo the audio to stop, radio can't send during play
+      delay(2500);
+      // stopAudio();
+      sendGoEvent(1);
+      // Turn off the LED ring
+      digitalWrite(RELAY_PIN, LOW);
     }
     timeLastJump = millis();
-    // Light the LED ring
-    digitalWrite(RELAY_PIN, HIGH);
-    // Play the chaching sound
-    startAudio();
-    // Wait fo the audio to stop, radio can't send during play
-    delay(2500);
-    // stopAudio();
-    sendGoEvent(1);
-    // Turn off the LED ring
-    digitalWrite(RELAY_PIN, LOW);
   }
 
   Watchdog.reset();
