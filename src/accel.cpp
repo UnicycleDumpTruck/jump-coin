@@ -32,8 +32,7 @@ void accelSetup(){
 }
 
 bool checkForJumps(){
-
-uint8_t click = lis.getClick();
+    uint8_t click = lis.getClick();
     if (click == 0) {
         return false;
     }
